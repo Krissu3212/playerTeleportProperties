@@ -6,10 +6,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class Main extends JavaPlugin {
 	
-	public static void main(String[] args) {
 		
-	}
-	
 	@Override
 	public void onEnable() {
 		System.out.println("playerTeleportProperties has been turned on");
