@@ -1,0 +1,9 @@
+firstName: "John"
+users:
+  Hullumeelne:
+    world:
+      rank: "Rookie"
+    world_nether:
+      rank: "Admin"
+    world_the_end:
+      rank: "Master"
