@@ -6,9 +6,14 @@ import java.io.IOException;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
-import org.bukkit.plugin.java.JavaPlugin;
 
-public class openFile extends JavaPlugin {
+public class OpenFile {
+	
+	private Main plugin;
+	
+	public OpenFile(Main plugin) {
+		this.plugin = plugin;
+	}
 	
 	private File customConfigFile;
     private FileConfiguration customConfig;
@@ -18,10 +23,12 @@ public class openFile extends JavaPlugin {
     }
 
     private void createCustomConfig() {
-        customConfigFile = new File(getDataFolder(), "custom.yml");
+        //Main plugin = new Main();
+    	
+    	customConfigFile = new File(plugin.getDataFolder(), "custom.yml");
         if (!customConfigFile.exists()) {
             customConfigFile.getParentFile().mkdirs();
-            saveResource("custom.yml", false);
+            plugin.saveResource("custom.yml", false);
          }
 
         customConfig= new YamlConfiguration();
@@ -35,7 +42,7 @@ public class openFile extends JavaPlugin {
     }
     public String printSmth(String player, String world) {
 		createCustomConfig();
-		String rank = getCustomConfig().getString("users.Hullumeelne.world.rank");
+		String rank = getCustomConfig().getString("users." + player + "." + world + ".rank");
     	return rank;
 	}
 }
