@@ -8,9 +8,11 @@ import org.bukkit.event.player.PlayerChangedWorldEvent;
 
 public class Listeners implements Listener {
 	
+	private Main plugin;
+	
 	// Constructor
-	public Listeners(Main main) {
-		
+	public Listeners(Main plugin) {
+		this.plugin = plugin;
 	}
 	
 	@EventHandler
@@ -20,12 +22,15 @@ public class Listeners implements Listener {
 		Player p = e.getPlayer();
 		String world = p.getWorld().getName();
 		
-		openFile data = new openFile();
+		OpenFile data = new OpenFile(plugin);
 		String rank = data.printSmth(p.getDisplayName(), world);
 		System.out.println(rank);
-
-		// Code not necessarily needed right now, just print out the world name that the player joined
+		//String rank = file.getData(p.getDisplayName(), world);
+		
+		//Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), "say pex " + p.getDisplayName() + " group set " + rank + " " + world);
+		
 		if (world.equals("world_nether") ) {
+			///pex {user} group set {group} {world}
 			Bukkit.broadcastMessage("Teleported to the nether");
 		}
 		if (world.equals("world_the_end")) {
